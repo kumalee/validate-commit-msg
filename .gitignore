@@ -2,7 +2,7 @@
 *.log
 *.iml
 *.DS_Store
-
+*.swp
 node_modules
 coverage
 nohup.out

@@ -1,5 +1,5 @@
 {
-  "name": "validate-commit-msg",
+  "name": "validate-commit-msg-smart",
   "description": "Script to validate a commit message follows the conventional changelog standard",
   "main": "index.js",
   "version": "0.0.0-development",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kentcdodds/validate-commit-msg.git"
+    "url": "https://github.com/kumalee/validate-commit-msg.git"
   },
   "keywords": [
     "githook",
@@ -26,12 +26,15 @@
     "conventional",
     "changelog"
   ],
-  "author": "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
+  "author": [
+    "Kent C. Dodds <kent@doddsfamily.us> (http://kentcdodds.com/)",
+    "Kuma Li <li.jun.kuma@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/kentcdodds/validate-commit-msg/issues"
+    "url": "https://github.com/kumalee/validate-commit-msg/issues"
   },
-  "homepage": "https://github.com/kentcdodds/validate-commit-msg#readme",
+  "homepage": "https://github.com/kumalee/validate-commit-msg#readme",
   "devDependencies": {
     "chai": "3.4.1",
     "codecov.io": "0.1.6",
@@ -40,7 +43,7 @@
     "ghooks": "1.0.3",
     "istanbul": "0.4.2",
     "mocha": "2.3.4",
-    "semantic-release": "4.3.5",
+    "semantic-release": "^4.3.5",
     "sinon": "1.17.2"
   },
   "config": {

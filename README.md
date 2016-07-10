@@ -1,10 +1,10 @@
-# validate-commit-msg
+# validate-commit-msg-smart
 
-[![travis build](https://img.shields.io/travis/kentcdodds/validate-commit-msg.svg?style=flat-square)](https://travis-ci.org/kentcdodds/validate-commit-msg)
-[![codecov coverage](https://img.shields.io/codecov/c/github/kentcdodds/validate-commit-msg.svg?style=flat-square)](https://codecov.io/github/kentcdodds/validate-commit-msg)
-[![version](https://img.shields.io/npm/v/validate-commit-msg.svg?style=flat-square)](http://npm.im/validate-commit-msg)
-[![downloads](https://img.shields.io/npm/dm/validate-commit-msg.svg?style=flat-square)](http://npm-stat.com/charts.html?package=validate-commit-msg&from=2015-08-01)
-[![MIT License](https://img.shields.io/npm/l/validate-commit-msg.svg?style=flat-square)](http://opensource.org/licenses/MIT)
+[![travis build](https://img.shields.io/travis/kumalee/validate-commit-msg.svg?style=flat-square)](https://travis-ci.org/kumalee/validate-commit-msg)
+[![codecov coverage](https://img.shields.io/codecov/c/github/kumalee/validate-commit-msg.svg?style=flat-square)](https://codecov.io/github/kumalee/validate-commit-msg)
+[![version](https://img.shields.io/npm/v/validate-commit-msg-smart.svg?style=flat-square)](http://npm.im/validate-commit-msg-smart)
+[![downloads](https://img.shields.io/npm/dm/validate-commit-msg-smart.svg?style=flat-square)](http://npm-stat.com/charts.html?package=validate-commit-msg-smart&from=2016-07-11)
+[![MIT License](https://img.shields.io/npm/l/validate-commit-msg-smart.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 [![Donate][donate-badge]][donate]
 
@@ -43,6 +43,20 @@ You can specify options in `package.json`
 These are the types that are allowed for your commit message. If omitted, the value is what is shown above.
 
 You can also specify: `"types": "*"` to indicate that you don't wish to validate types
+
+You can use RegExp in "types" to validate some special types, like a commit message for jira. For example:
+
+```
+// in package.json
+"types": [
+  "\\[jira\\-\\d+\\]\\s?feat"
+]
+
+// in commit message
+[jira-0730] feat: support RegExp in types now.
+```
+
+** Can't use `():` in types' RegExp. **
 
 #### warnOnFail
 
