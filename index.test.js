@@ -55,6 +55,9 @@ describe('validate-commit-msg.js', function() {
       expect(m.validateMessage('revert: feat($location): something')).to.equal(VALID);
       expect(m.validateMessage('style($http): something')).to.equal(VALID);
       expect(m.validateMessage('test($resource): something')).to.equal(VALID);
+      expect(m.validateMessage('[jira-1234] feat($resource): something')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234 feat($resource): something')).to.equal(VALID);
+      expect(m.validateMessage('1234 feat($resource): something')).to.equal(VALID);
 
       expect(errors).to.deep.equal([]);
       expect(logs).to.deep.equal([]);

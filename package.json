@@ -62,7 +62,10 @@
         "test",
         "chore",
         "revert",
-        "custom"
+        "custom",
+        "RegExp \\[jira\\-\\d+\\]\\s?feat",
+        "RegExp jira\\-\\d+\\s?feat",
+        "RegExp \\d\\s?feat"
       ],
       "warnOnFail": false
     }

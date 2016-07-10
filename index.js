@@ -23,7 +23,7 @@ var IGNORED = new RegExp(util.format('(^WIP)|(^%s$)', semverRegex().source));
 var TYPES = config.types || ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'chore', 'revert'];
 
 // fixup! and squash! are part of Git, commits tagged with them are not intended to be merged, cf. https://git-scm.com/docs/git-commit
-var PATTERN = /^((fixup! |squash! )?(\w+)(?:\(([^\)\s]+)\))?: (.+))(?:\n|$)/;
+var PATTERN = /^((fixup! |squash! )?([^:\(\)]+)(?:\(([^\)\s]+)\))?: (.+))(?:\n|$)/;
 var MERGE_COMMIT_PATTERN = /^Merge /;
 var error = function() {
   // gitx does not display it
@@ -78,8 +78,25 @@ var validateMessage = function(raw) {
     }
 
     if (TYPES !== '*' && TYPES.indexOf(type) === -1) {
-      error('"%s" is not allowed type !', type);
-      isValid = false;
+      var RegExpFlag = false;
+      for (var _type of TYPES){
+        if(_type.indexOf('RegExp') === 0){
+          _type = _type.substr(7);
+          _type = new RegExp(_type);
+          var typeMatch = _type.exec(type);
+          if(!typeMatch){ continue; }
+          else {
+            isValid = true;
+            RegExpFlag = true;
+            break;
+          }
+        }
+      }
+
+      if( RegExpFlag === false){
+        error('"%s" is not allowed type !', type);
+        isValid = false;
+      }
     }
 
     if (!SUBJECT_PATTERN.exec(subject)) {
