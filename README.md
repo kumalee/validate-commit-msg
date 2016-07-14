@@ -45,7 +45,7 @@ These are the types that are allowed for your commit message. If omitted, the va
 Types support validate jira plugin [Git Integration for JIRA ](https://bigbrassband.com/documentation.html#gitctrlvwr_linkcom2issues)'s format now. For example git commit message:
 
 ```
-jira-666 WoW! I can validate commit message for jira now.
+jira-666: WoW! I can validate commit message for jira now.
 
 jira-667 feat: support jira git plugin now.
 ```
