@@ -49,14 +49,14 @@ You can use RegExp in "types" to validate some special types, like a commit mess
 ```
 // in package.json
 "types": [
-  "\\[jira\\-\\d+\\]\\s?feat"
+  "RegExp jira\\-\\d+\\s?feat"
 ]
 
 // in commit message
-[jira-0730] feat: support RegExp in types now.
+jira-0730 feat: support RegExp in types now.
 ```
 
-** Can't use `():` in types' RegExp. **
+** Must start with `RegExp ` and Can't use `():` in types' RegExp. **
 
 #### warnOnFail
 
