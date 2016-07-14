@@ -20,7 +20,11 @@ var semverRegex = require('semver-regex')
 var config = getConfig();
 var MAX_LENGTH = config.maxSubjectLength || 100;
 var IGNORED = new RegExp(util.format('(^WIP)|(^%s$)', semverRegex().source));
-var TYPES = config.types || ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'chore', 'revert'];
+var TYPES = config.types ||
+  [
+    'feat', 'fix', 'docs', 'style','refactor',
+    'perf', 'test', 'chore', 'revert', 'regexp jira\\-\\d+',
+    'regexp jira\\-\\d+\\s?[feat|fix|docs|style|refactor|perf|test|chore|revert]'];
 
 // fixup! and squash! are part of Git, commits tagged with them are not intended to be merged, cf. https://git-scm.com/docs/git-commit
 var PATTERN = /^((fixup! |squash! )?([^:\(\)]+)(?:\(([^\)\s]+)\))?: (.+))(?:\n|$)/;
@@ -80,7 +84,7 @@ var validateMessage = function(raw) {
     if (TYPES !== '*' && TYPES.indexOf(type) === -1) {
       var RegExpFlag = false;
       for (var _type of TYPES){
-        if(_type.indexOf('RegExp') === 0){
+        if(_type.toUpperCase().indexOf('REGEXP') === 0){
           _type = _type.substr(7);
           _type = new RegExp(_type);
           var typeMatch = _type.exec(type);

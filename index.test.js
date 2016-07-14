@@ -46,7 +46,6 @@ describe('validate-commit-msg.js', function() {
       expect(m.validateMessage('chore(*): something')).to.equal(VALID);
       expect(m.validateMessage('chore(foo-bar): something')).to.equal(VALID);
       expect(m.validateMessage('chore(guide/location): something')).to.equal(VALID);
-      expect(m.validateMessage('custom(baz): something')).to.equal(VALID);
       expect(m.validateMessage('docs($filter): something')).to.equal(VALID);
       expect(m.validateMessage('feat($location): something (another thing)')).to.equal(VALID);
       expect(m.validateMessage('fix($compile): something')).to.equal(VALID);
@@ -55,9 +54,20 @@ describe('validate-commit-msg.js', function() {
       expect(m.validateMessage('revert: feat($location): something')).to.equal(VALID);
       expect(m.validateMessage('style($http): something')).to.equal(VALID);
       expect(m.validateMessage('test($resource): something')).to.equal(VALID);
-      expect(m.validateMessage('[jira-1234] feat($resource): something')).to.equal(VALID);
-      expect(m.validateMessage('jira-1234 feat($resource): something')).to.equal(VALID);
-      expect(m.validateMessage('1234 feat($resource): something')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234: something')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234 chore($controller): something')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234 chore(*): something')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234 chore(foo-bar): something')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234 chore(guide/location): something')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234 docs($filter): something')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234 feat($location): something (another thing)')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234 fix($compile): something')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234 refactor($httpBackend): something')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234 revert(foo): something')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234 revert: feat($location): something')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234 style($http): something')).to.equal(VALID);
+      expect(m.validateMessage('jira-1234 test($resource): something')).to.equal(VALID);
+
 
       expect(errors).to.deep.equal([]);
       expect(logs).to.deep.equal([]);

@@ -27,7 +27,7 @@ You can specify options in `package.json`
 {
   "config": {
     "validate-commit-msg": {
-      "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "chore", "revert"], // default
+      "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "chore", "revert", "regexp", "regexp jira\\-\\d+", "regexp jira\\-\\d+\\s?[feat|fix|docs|style|refactor|perf|test|chore|revert]"], // default
       "warnOnFail": false, // default
       "maxSubjectLength": 100, // default
       "subjectPattern": ".+", // default
@@ -42,18 +42,26 @@ You can specify options in `package.json`
 
 These are the types that are allowed for your commit message. If omitted, the value is what is shown above.
 
+Types support validate jira plugin [Git Integration for JIRA ](https://bigbrassband.com/documentation.html#gitctrlvwr_linkcom2issues)'s format now. For example git commit message:
+
+```
+jira-666 WoW! I can validate commit message for jira now.
+
+jira-667 feat: support jira git plugin now.
+```
+
 You can also specify: `"types": "*"` to indicate that you don't wish to validate types
 
-You can use RegExp in "types" to validate some special types, like a commit message for jira. For example:
+You can use custom regexp in "types" to validate some special types, For example:
 
 ```
 // in package.json
 "types": [
-  "RegExp jira\\-\\d+\\s?feat"
+  "regexp \\[git\\-\\d+\\]\\s?task"
 ]
 
 // in commit message
-jira-0730 feat: support RegExp in types now.
+[git-0730] task: support custom RegExp in types now.
 ```
 
 ** Must start with `RegExp ` and Can't use `():` in types' RegExp. **
